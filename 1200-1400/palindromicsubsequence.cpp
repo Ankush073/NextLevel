@@ -23,15 +23,6 @@ typedef vector<pii> vpii;
 typedef vector<pl> vpl;
 typedef vector<vi> vvi;
 typedef vector<vl> vvl;
-int find(vi &arr,int maxi){
-      int n=arr.size();
-      for(int i=n-1;i>=1;i--){
-            if(arr[i]==maxi){
-                  return i;
-            }
-      }
-      return -1;
-}
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -46,33 +37,18 @@ int main()
     while (t--)
     {
         //write code here
-        string s;
-        string ans;
-        cin>>s;
-        int n=s.length();
-        vi arr(n);
-        fo(i,n){
-            
+        int n;
+        cin>>n;
+        if(n==6){
+            cout<<"1 1 2 3 1 2\n";
         }
-        fo(i,n-1){
-            int maxi=*max_element(arr.begin()+1,arr.end());
-            // cout<<maxi<<endl;
-            if(maxi==0){
-                  continue;
+        else{
+            for(int i=1;i<=n-2;i++){
+                  cout<<i<<" ";
             }
-            int index=find(arr,maxi);
-            maxi--;
-            arr[index]=maxi;
-            swap(arr[index-1],arr[index]);
+            cout<<"1 2\n";
         }
-        arr[n-1]-=1;
-        swap(arr[n-2],arr[n-1]);
-        fo(i,n){
-            ans+=to_string(arr[i]);
-        }
-        cout<<ans<<endl;
-
-       
+      
     }
-    return 0;
 }
+  

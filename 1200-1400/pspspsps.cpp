@@ -23,17 +23,6 @@ typedef vector<pii> vpii;
 typedef vector<pl> vpl;
 typedef vector<vi> vvi;
 typedef vector<vl> vvl;
-ll power(ll n, ll expo){
-      if(expo==0){
-            return 1;
-      }
-      while(expo>1){
-            n*=n;
-            expo--;
-      }
-      return n;
-
-}
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -48,34 +37,38 @@ int main()
     while (t--)
     {
         //write code here
-        string s;
-        cin>>s;
-        long long cnt2=0;
-        long long cnt3=0;
-        long long sum=0;
-        bool flag=false;
-        for(int i=0;i<s.size();i++){
-            if(s[i]=='2') cnt2++;
-            else if(s[i]=='3') cnt3++;
-            sum+=s[i]-'0';
-        }
-        long long diff_cover= (9-sum%9)%9;
-        for(long long i=0;i<=cnt3;i++){
-            long long new_diff=(diff_cover-6ll*i)%9;
-            if(new_diff<0){
-                new_diff+=9;
+       int n;
+       cin>>n;
+       string s;
+       cin>>s;
+       int pc=0;
+       int sc=0;
+       int pi=-1;
+       int si=0;
+       int index=0;
+       for(char ch:s){
+            if(ch=='s'){
+                  si=index;
+                  sc++;
             }
-            long long a=(new_diff*5)%9;
-            if(a<=cnt2){
-               flag=true;
-                break;
+            if(ch=='p'){
+                  pc++;
+                  if(pi==-1){
+                        pi=index;
+                  }
             }
-        }
-        if(flag){
+            index++;
+       }
+       if(pc==0 || sc==0){
             cout<<"YES\n";
-        }
-        else cout<<"NO\n";
-       
+       }
+       else if(si==0 || pi==n-1){
+            cout<<"YES\n";
+       }
+       else cout<<"NO\n";
+
+
+      
     }
-    return 0;
 }
+  
